@@ -19,5 +19,14 @@ public class User {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-}
 
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return this.lastName==null ? this.firstName : this.firstName + " " + this.lastName;
+	}
+
+	
+
+
+}

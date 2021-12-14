@@ -11,6 +11,11 @@ public class Greeting {
 		this.message = message;
 	}
 
+	@Override
+	public String toString() {
+		return "Greeting [id=" + id + ", message=" + message + "]";
+	}
+
 	public long getId() {
 		return id;
 	}
