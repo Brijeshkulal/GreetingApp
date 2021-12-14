@@ -42,7 +42,7 @@ public class GreetingController {
 	}
 	
 	@Autowired
-    private IGreetingService greetingService;
+	private IGreetingService greetingService;
 	
 
     @GetMapping("greeting/service")
