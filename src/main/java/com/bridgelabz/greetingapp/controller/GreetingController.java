@@ -43,12 +43,12 @@ public class GreetingController {
 	
 	@Autowired
     private IGreetingService greetingService;
+	
 
     @GetMapping("greeting/service")
     public Greeting getGreet(@RequestParam(value = "name", defaultValue = "World") String name) {
         User user = new User();
         user.setFirstName(name);
-		return greetingService.addGreeting(user);
+        return greetingService.addGreeting(user);
     }
-
 }
