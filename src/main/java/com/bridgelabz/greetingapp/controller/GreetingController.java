@@ -45,10 +45,10 @@ public class GreetingController {
 	private IGreetingService greetingService;
 	
 
-    @GetMapping("greeting/service")
-    public Greeting getGreet(@RequestParam(value = "name", defaultValue = "World") String name) {
-        User user = new User();
-        user.setFirstName(name);
-        return greetingService.addGreeting(user);
+	@GetMapping("greeting/service")
+	public Greeting getGreet(@RequestParam(value = "name", defaultValue = "World") String name) {
+		User user = new User();
+		user.setFirstName(name);
+		return greetingService.addGreeting(user);
     }
 }
