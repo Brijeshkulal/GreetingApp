@@ -1,5 +1,6 @@
 package com.bridgelabz.greetingapp.services;
 
+import java.util.Optional;
 import java.util.concurrent.atomic.AtomicLong;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,5 +23,13 @@ public class GreetingService implements IGreetingService {
     	String message = String.format(template, (user.toString().isEmpty() ? "World" : user.toString()));
     	return new Greeting(counter.incrementAndGet(), message);
     }
-
+    
+    @Override
+    public Greeting getGreetingById(long id) {
+    	Optional<Greeting> greeting = greetingRepository.findById(id);
+    	if (greeting.isPresent()) {
+    		return greeting.get();
+    	}
+    	return null;
+    }
 }
