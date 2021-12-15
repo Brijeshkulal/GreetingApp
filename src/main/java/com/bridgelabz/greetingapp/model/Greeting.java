@@ -17,10 +17,10 @@ public class Greeting {
         message = "";
     }
 
-    public Greeting(long id, String message) {
-        setId(id);
-        setMessage(message);
-    }
+	public Greeting(long id, String message) {
+		this.id = id;
+		this.message = message;
+	}
 
     public String getMessage() {
         return message;
@@ -36,10 +36,6 @@ public class Greeting {
 
     public void setId(long id) {
         this.id = id;
-    }
-
-    public String toString() {
-        return "Greeting [id=" + id + ", message=" + message + "]";
     }
 
 }

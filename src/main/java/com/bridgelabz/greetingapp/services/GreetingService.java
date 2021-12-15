@@ -1,5 +1,6 @@
 package com.bridgelabz.greetingapp.services;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicLong;
 
@@ -16,7 +17,7 @@ public class GreetingService implements IGreetingService {
     private final AtomicLong counter = new AtomicLong();
     
     @Autowired
-	private GreetingRepository greetingRepository;
+    private GreetingRepository greetingRepository;
 
     @Override
     public Greeting addGreeting(User user) {
@@ -31,5 +32,10 @@ public class GreetingService implements IGreetingService {
     		return greeting.get();
     	}
     	return null;
+    }
+    
+    @Override
+    public List<Greeting> getAllGreetings() {
+    	return greetingRepository.findAll();
     }
 }
