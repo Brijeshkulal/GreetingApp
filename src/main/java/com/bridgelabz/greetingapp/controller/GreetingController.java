@@ -13,42 +13,23 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.bridgelabz.greetingapp.model.Greeting;
 import com.bridgelabz.greetingapp.model.User;
+import com.bridgelabz.greetingapp.services.GreetingService;
 import com.bridgelabz.greetingapp.services.IGreetingService;
 
 
 @RestController
 public class GreetingController {
-	private static final String template = "Hello, %s!";
-	private final AtomicLong counter = new AtomicLong();
-	
-	@GetMapping("/query")
-	public Greeting sayHello(@RequestParam(value = "name", defaultValue = "World") String name) {
-		return new Greeting(counter.incrementAndGet(), String.format(template, name));
-	}
-	
-	@GetMapping("/param/{name}")
-	public Greeting greetingParam(@PathVariable String name) {
-		return new Greeting(counter.incrementAndGet(), String.format(template, name));
-	}
-	
-	@PostMapping("/post")
-	public Greeting greetingPost(@RequestBody User user) {
-		return new Greeting(counter.incrementAndGet(), String.format(template, user.getFirstName() + " " + user.getLastName()));
-	}
-	
-	@PutMapping("put/{firstName}")
-	public Greeting greetingPut(@PathVariable String firstName, @RequestParam(value = "lastName") String lastName) {
-		return new Greeting(counter.incrementAndGet(), String.format(template, firstName + " " + lastName));
-	}
 	
 	@Autowired
-	private IGreetingService greetingService;
-	
+	private GreetingService greetingService;
 
-	@GetMapping("greeting/service")
-	public Greeting getGreet(@RequestParam(value = "name", defaultValue = "World") String name) {
+	@PostMapping("/greeting")
+	public Greeting addGreeting(@RequestParam(value = "firstName", defaultValue = "World") String firstName,
+			@RequestParam(value = "lastName", defaultValue = "") String lastName) {
 		User user = new User();
-		user.setFirstName(name);
+		user.setFirstName(firstName);
+		user.setLastName(lastName);
 		return greetingService.addGreeting(user);
-    }
+	}
+
 }

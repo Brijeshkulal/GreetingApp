@@ -1,5 +1,6 @@
 package com.bridgelabz.greetingapp.model;
 
+
 public class User {
 	private String firstName;
 	private String lastName;
@@ -21,10 +22,11 @@ public class User {
 	}
 
 	@Override
-	public String toString() {
-		// TODO Auto-generated method stub
-		return this.lastName==null ? this.firstName : this.firstName + " " + this.lastName;
-	}
+    public String toString() {
+        String message = (firstName != null) ? firstName + " " : "";
+        message += (lastName != null) ? lastName : "";
+        return message.trim();
+    }
 
 	
 
